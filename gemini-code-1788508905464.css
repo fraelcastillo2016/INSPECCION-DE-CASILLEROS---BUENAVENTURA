@@ -1,0 +1,172 @@
+:root {
+    --primary-color: #70AD47;
+    --primary-dark: #568835;
+    --secondary-color: #595959;
+    --border-black: #000000;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-bg: #f9f9f9;
+    --card-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; }
+
+body { background-color: #eef2f5; color: #000; padding: 15px; display: flex; justify-content: center; }
+
+/* CONTENEDOR PRINCIPAL Y MARCAS DE AGUA */
+.container { 
+    width: 100%; 
+    max-width: 980px; 
+    background: #ffffff; 
+    padding: 20px; 
+    border: 1px solid #ccc; 
+    box-shadow: var(--card-shadow); 
+    position: relative;
+    overflow: hidden;
+}
+
+/* MARCA DE AGUA FONDO DE CERTIFICACIONES */
+.watermark-bg {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 380px;
+    background-image: url('marcas-certificaciones.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* MARCA DE AGUA: DOCUMENTO CONTROLADO */
+.watermark-controlled {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3.2rem;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.15);
+    letter-spacing: 12px;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+.view-section {
+    position: relative;
+    z-index: 1;
+}
+
+/* NAVEGACIÓN PRINCIPAL */
+.nav-tabs { display: flex; gap: 5px; margin-bottom: 15px; border-bottom: 2px solid var(--primary-color); }
+.nav-btn { padding: 8px 16px; border: 1px solid #ccc; border-bottom: none; background: #f0f0f0; font-size: 0.85rem; font-weight: bold; cursor: pointer; }
+.nav-btn.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+
+/* ENCABEZADO OFICIAL Y LOGO CIAMSA */
+.header-official-table { display: grid; grid-template-columns: 180px 1fr 180px; border: 1.5px solid var(--border-black); text-align: center; margin-bottom: 10px; background: #fff; }
+.header-col { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.header-col:not(:last-child) { border-right: 1.5px solid var(--border-black); }
+.row-cell { border-bottom: 1px solid var(--border-black); padding: 4px; font-size: 0.75rem; font-weight: bold; width: 100%; }
+.row-cell:last-child { border-bottom: none; }
+
+.title-main { font-size: 0.85rem; font-weight: bold; }
+.title-sub { font-size: 0.95rem; font-weight: bold; padding: 6px 0; }
+.title-footer { font-size: 0.65rem; font-weight: normal; }
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px;
+    width: 100%;
+}
+
+.logo-img { max-width: 130px; max-height: 38px; object-fit: contain; }
+.page-num { font-size: 0.75rem; border-top: 1px solid var(--border-black); padding: 3px; width: 100%; }
+
+/* BARRA SUPERIOR DE CAMPOS */
+.top-fields-bar { display: flex; flex-wrap: wrap; border: 1.5px solid var(--border-black); margin-bottom: 12px; background: #fff; }
+.field-box { padding: 5px; font-size: 0.75rem; font-weight: bold; display: flex; align-items: center; justify-content: center; }
+.label-green { background-color: var(--primary-color); color: #000; border-right: 1px solid var(--border-black); border-bottom: 1px solid var(--border-black); min-width: 65px; }
+.input-box { border-right: 1px solid var(--border-black); border-bottom: 1px solid var(--border-black); flex: 1; min-width: 120px; }
+.input-box input, .input-box select { width: 100%; border: none; outline: none; font-size: 0.8rem; background: transparent; }
+
+/* TEXTOS Y BANNERS */
+.legal-text-block { font-size: 0.8rem; line-height: 1.35; text-align: justify; margin-bottom: 10px; }
+.legal-text-block input { border: none; border-bottom: 1px solid #000; outline: none; font-weight: bold; width: 220px; text-align: center; }
+.section-intro-text { font-size: 0.8rem; margin-bottom: 6px; }
+
+.table-title-banner { background-color: var(--primary-color); color: #000; font-weight: bold; font-size: 0.85rem; text-align: center; padding: 4px; border: 1px solid var(--border-black); margin-bottom: 5px; }
+
+/* TABLAS Y FORMULARIOS */
+.table-responsive { width: 100%; overflow-x: auto; }
+.ciamsa-table { width: 100%; border-collapse: collapse; border: 1.5px solid var(--border-black); margin-bottom: 10px; background: rgba(255, 255, 255, 0.85); }
+.ciamsa-table th { background-color: var(--primary-color); color: #000; font-size: 0.7rem; border: 1px solid var(--border-black); padding: 5px; text-align: center; vertical-align: middle; }
+.ciamsa-table td { border: 1px solid var(--border-black); padding: 6px; text-align: center; font-size: 0.8rem; }
+.tbl-select { width: 100%; border: none; outline: none; font-weight: bold; text-align-last: center; font-size: 0.85rem; background: transparent; }
+
+.ciamsa-textarea { width: 100%; border: 1px solid var(--border-black); padding: 5px; font-size: 0.8rem; outline: none; resize: vertical; background: rgba(255, 255, 255, 0.85); }
+
+/* TARJETAS Y CONTROLES */
+.form-card, .filter-card { border: 1px solid var(--border-black); padding: 10px; margin-bottom: 12px; background-color: rgba(255, 255, 255, 0.9); }
+.card-header-actions { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+
+.func-card { border: 1px solid var(--border-black); padding: 8px; margin-bottom: 10px; background-color: rgba(249, 249, 249, 0.9); }
+.func-card .card-header { display: flex; justify-content: space-between; border-bottom: 1px solid #ccc; padding-bottom: 4px; margin-bottom: 6px; }
+.func-card .card-header h4 { font-size: 0.8rem; color: #000; }
+
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.form-group { display: flex; flex-direction: column; }
+.form-group label { font-size: 0.7rem; font-weight: bold; margin-bottom: 2px; color: #000; }
+.form-group input, .form-group select { padding: 4px; border: 1px solid var(--border-black); font-size: 0.8rem; outline: none; }
+
+/* GALERÍA DE FOTOS */
+.photo-gallery { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.photo-thumb { width: 60px; height: 60px; position: relative; border: 1px solid var(--border-black); }
+.photo-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.btn-del-photo { position: absolute; top: 0; right: 0; background: var(--danger-color); color: white; border: none; width: 15px; height: 15px; cursor: pointer; font-size: 10px; }
+
+/* BADGES Y FIRMAS */
+.badge { padding: 3px 8px; border-radius: 3px; font-weight: bold; font-size: 0.75rem; display: inline-block; }
+.badge-completed { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.badge-pending { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+
+.compact-signature { height: 70px !important; width: 100%; max-width: 350px; background: #fff; border: 1px solid var(--border-black); }
+.func-signature-canvas { width: 100%; height: 100%; cursor: crosshair; display: block; }
+
+/* BOTONES */
+.btn { padding: 6px 12px; border: 1px solid var(--border-black); font-size: 0.8rem; font-weight: bold; cursor: pointer; }
+.btn-primary { background-color: var(--primary-color); color: #000; }
+.btn-secondary { background-color: var(--secondary-color); color: #fff; }
+.btn-success { background-color: #28a745; color: #fff; }
+.btn-danger { background-color: var(--danger-color); color: #fff; }
+.btn-small { padding: 3px 6px; font-size: 0.7rem; margin-right: 2px; }
+
+/* DASHBOARD */
+.dash-header h2 { font-size: 1.1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-color); padding-bottom: 5px; margin-bottom: 12px; }
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 15px; }
+.kpi-card { border: 1px solid var(--border-black); padding: 10px; text-align: center; background: var(--light-bg); }
+.kpi-card h4 { font-size: 0.75rem; margin-bottom: 4px; }
+.kpi-card p { font-size: 1.4rem; font-weight: bold; }
+
+.charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+.chart-box { border: 1px solid var(--border-black); padding: 10px; background: #fff; }
+.chart-box h3 { font-size: 0.85rem; text-align: center; margin-bottom: 8px; }
+
+.hidden { display: none !important; }
+
+/* ESTILOS DE IMPRESIÓN (PDF EXACTO) */
+@media print {
+    .nav-tabs, .btn, .photo-gallery button, .filter-card, #btnGuardarRegistro, #btnLimpiarForm { display: none !important; }
+    body { background: white; padding: 0; }
+    .container { border: none; box-shadow: none; width: 100%; max-width: 100%; padding: 0; }
+    .watermark-bg { opacity: 0.15 !important; }
+    .watermark-controlled { color: rgba(0, 0, 0, 0.12) !important; display: block !important; }
+}

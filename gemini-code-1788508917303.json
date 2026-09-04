@@ -1,0 +1,21 @@
+{
+  "short_name": "FORSE032",
+  "name": "CIAMSA - Inspección de Casilleros FORSE032",
+  "icons": [
+    {
+      "src": "logo-ciamsa.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo-ciamsa.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#ffffff",
+  "theme_color": "#70AD47",
+  "display": "standalone",
+  "orientation": "portrait"
+}

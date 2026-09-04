@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORSE032 - ACTA INSPECCIÓN DE CASILLEROS</title>
+    
+    <!-- Archivos para PWA (App Instalable) -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#70AD47">
+    <link rel="apple-touch-icon" href="logo-ciamsa.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- MARCAS DE AGUA DEL FORMATO AUTORIZADO -->
+        <div class="watermark-bg"></div>
+        <div class="watermark-controlled">DOCUMENTO CONTROLADO</div>
+
+        <!-- NAVEGACIÓN PRINCIPAL -->
+        <nav class="nav-tabs">
+            <button class="nav-btn active" data-target="nuevoFormView">➕ Nuevo Registro</button>
+            <button class="nav-btn" data-target="historialView">📁 Historial de Registros</button>
+            <button class="nav-btn" data-target="dashboardView">📊 Dashboard y Gráficos</button>
+        </nav>
+
+        <!-- MÓDULO: FORMULARIO FORSE032 -->
+        <div id="nuevoFormView" class="view-section active">
+            
+            <div class="header-official-table">
+                <div class="header-col col-1">
+                    <div class="row-cell">FORSE032</div>
+                    <div class="row-cell">VERSIÓN 4.0</div>
+                    <div class="row-cell">18-ENE-2019</div>
+                </div>
+                <div class="header-col col-2">
+                    <div class="row-cell title-main">FORMATO</div>
+                    <div class="row-cell title-sub">ACTA INSPECCION DE CASILLEROS</div>
+                    <div class="row-cell title-footer">C.I. de Azúcares y Mieles S.A y Agencia de Aduanas CIAMSA</div>
+                </div>
+                <div class="header-col col-3">
+                    <div class="logo-container">
+                        <img src="logo-ciamsa.png" alt="CIAMSA Logo" class="logo-img" onerror="this.style.display='none'; document.getElementById('alt-logo-fallback').style.display='block';">
+                        <span id="alt-logo-fallback" style="display:none; font-weight:900; color:#70AD47; font-size:1.2rem;">CIAMSA</span>
+                    </div>
+                    <div class="page-num">Pagina 1 de 1</div>
+                </div>
+            </div>
+
+            <form id="inspectionForm">
+                
+                <div class="top-fields-bar">
+                    <div class="field-box label-green">FECHA</div>
+                    <div class="field-box input-box"><input type="date" id="fecha" required></div>
+                    <div class="field-box label-green">HORA:</div>
+                    <div class="field-box input-box"><input type="time" id="hora" required></div>
+                    <div class="field-box label-green">AREA / SECTOR</div>
+                    <div class="field-box input-box">
+                        <select id="areaSelect" required style="width: 48%; border-right: 1px solid #000;">
+                            <option value="" disabled selected>-- Área --</option>
+                            <option value="CIAMSA UNO">CIAMSA UNO</option>
+                            <option value="CIAMSA DOS">CIAMSA DOS</option>
+                            <option value="OTRO">OTRO</option>
+                        </select>
+                        <select id="sectorSelect" required style="width: 48%;">
+                            <option value="" disabled selected>-- Sector --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="otrosAreaSectorGroup" class="form-grid hidden" style="margin-bottom: 10px;">
+                    <div class="form-group hidden" id="areaOtroGroup">
+                        <label>Especifique Área *</label>
+                        <input type="text" id="areaOtro">
+                    </div>
+                    <div class="form-group hidden" id="sectorOtroGroup">
+                        <label>Especifique Sector *</label>
+                        <input type="text" id="sectorOtro">
+                    </div>
+                </div>
+
+                <div class="legal-text-block">
+                    Los señores <input type="text" id="losSenoresResp" placeholder="Entidad / Empresa" required> funcionarios de la compañía en cumplimiento de las políticas de Seguridad Física, Calidad, Inocuidad y BPM, inmersas en el Sistema de Gestión Integral, proceden a efectuar inspección de casilleros con el fin de identificar factores de riesgos que pueden vulnerar la integridad del personal, los procesos y la compañía.
+                </div>
+
+                <p class="section-intro-text">Para tal efecto se la hace la inspección basada en los siguientes aspectos:</p>
+                
+                <div class="table-title-banner">INSPECCION GENERAL</div>
+
+                <div class="table-responsive">
+                    <table class="ciamsa-table">
+                        <thead>
+                            <tr>
+                                <th>ORDEN Y ASEO</th>
+                                <th>OLORES FUERTES O DESCONOCIDOS</th>
+                                <th>PRESENCIA DE HUMEDAD</th>
+                                <th>PRESENCIA INSECTOS O ROEDORES</th>
+                                <th>MATERIALES DIFERENTES A ELEMENTOS PERSONALES<br><small>(Envase de vidrio, empaques herramientas, equipos etc)</small></th>
+                                <th>OTROS FACTORES DE RIESGO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><select id="gen_v1" class="tbl-select" required><option value="">--</option><option value="SI">SI</option><option value="NO">NO</option></select></td>
+                                <td><select id="gen_v2" class="tbl-select" required><option value="">--</option><option value="SI">SI</option><option value="NO">NO</option></select></td>
+                                <td><select id="gen_v3" class="tbl-select" required><option value="">--</option><option value="SI">SI</option><option value="NO">NO</option></select></td>
+                                <td><select id="gen_v4" class="tbl-select" required><option value="">--</option><option value="SI">SI</option><option value="NO">NO</option></select></td>
+                                <td><select id="gen_v5" class="tbl-select" required><option value="">--</option><option value="SI">SI</option><option value="NO">NO</option></select></td>
+                                <td><select id="gen_v6" class="tbl-select" required><option value="">--</option><option value="SI">SI</option><option value="NO">NO</option></select></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="form-card" style="margin-top: 15px;">
+                    <div class="card-header-actions">
+                        <div class="table-title-banner" style="margin: 0; width: auto; padding: 6px 15px;">INSPECCION INDIVIDUAL</div>
+                        <button type="button" class="btn btn-primary" id="btnAddFuncionario">+ Agregar Funcionario</button>
+                    </div>
+                    <div id="funcionariosContainer"></div>
+                </div>
+
+                <div class="form-group" style="margin-top: 15px; margin-bottom: 15px;">
+                    <label><strong>OBSERVACIONES:</strong></label>
+                    <textarea id="obsGenerales" rows="2" class="ciamsa-textarea" placeholder="Escriba las observaciones generales de la inspección..."></textarea>
+                </div>
+
+                <div class="form-card">
+                    <div class="table-title-banner">RESPONSABLE DE LA INSPECCIÓN</div>
+                    <div class="form-grid" style="margin-top: 12px;">
+                        <div class="form-group">
+                            <label for="respNombre">NOMBRE USUARIO / RESPONSABLE *</label>
+                            <input type="text" id="respNombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="respCedula">No. CÉDULA *</label>
+                            <input type="text" id="respCedula" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="respCargoSelect">CARGO *</label>
+                            <select id="respCargoSelect" required>
+                                <option value="Supervisor de Seguridad CIAMSA" selected>Supervisor de Seguridad CIAMSA</option>
+                                <option value="OTRO">Otro (Especificar)</option>
+                            </select>
+                        </div>
+                        <div class="form-group hidden" id="respCargoOtroGroup">
+                            <label for="respCargoOtro">Especifique Otro Cargo *</label>
+                            <input type="text" id="respCargoOtro">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top:10px;">
+                        <label>FIRMA RESPONSABLE *</label>
+                        <div class="func-signature-wrapper compact-signature">
+                            <canvas id="signatureCanvas" class="func-signature-canvas"></canvas>
+                        </div>
+                        <button type="button" class="btn btn-small btn-light" id="btnClearSignature" style="margin-top:4px; width:100px;">Limpiar Firma</button>
+                    </div>
+                </div>
+
+                <div class="form-card">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="estadoInspeccion">ESTADO DE LA INSPECCIÓN *</label>
+                            <select id="estadoInspeccion">
+                                <option value="Pendiente por finalizar">Pendiente por finalizar</option>
+                                <option value="Completado">Completado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="actions-wrapper" style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button type="submit" class="btn btn-success" id="btnGuardarRegistro">💾 Guardar Registro</button>
+                        <button type="button" class="btn btn-secondary" id="btnLimpiarForm">Limpiar Formulario</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- MÓDULO: HISTORIAL DE REGISTROS -->
+        <div id="historialView" class="view-section hidden">
+            <header class="dash-header">
+                <h2>HISTORIAL DE FORMULARIOS REGISTRADOS</h2>
+            </header>
+
+            <div class="filter-card">
+                <div class="table-title-banner" style="background-color: var(--secondary-color); color: #fff;">FILTROS DE BÚSQUEDA</div>
+                <div class="form-grid" style="margin-top: 10px;">
+                    <div class="form-group">
+                        <label>Filtrar por Fecha:</label>
+                        <input type="date" id="filterFecha">
+                    </div>
+                    <div class="form-group">
+                        <label>Filtrar por Área:</label>
+                        <input type="text" id="filterArea" placeholder="Ej: CIAMSA UNO">
+                    </div>
+                    <div class="form-group">
+                        <label>Filtrar por Inspector / Responsable:</label>
+                        <input type="text" id="filterInspector" placeholder="Nombre inspector...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="history-block" style="margin-top: 15px;">
+                <div class="table-responsive">
+                    <table class="ciamsa-table">
+                        <thead>
+                            <tr>
+                                <th>ID FORMULARIO</th>
+                                <th>FECHA</th>
+                                <th>ÁREA / SECTOR</th>
+                                <th>INSPECTOR RESPONSABLE</th>
+                                <th>ESTADO</th>
+                                <th>ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblHistorialBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- MÓDULO: DASHBOARD -->
+        <div id="dashboardView" class="view-section hidden">
+            <header class="dash-header">
+                <h2>DASHBOARD DE CONTROL Y ESTADÍSTICAS</h2>
+            </header>
+
+            <div class="filter-card" style="margin-bottom: 15px;">
+                <div class="form-group">
+                    <label><strong>SELECCIONAR REGISTRO PARA VISUALIZAR:</strong></label>
+                    <select id="dashFormSelect">
+                        <option value="TODOS">-- Ver Todos los Registros --</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h4>Total Inspecciones</h4>
+                    <p id="kpiTotal">0</p>
+                </div>
+                <div class="kpi-card">
+                    <h4>Completadas</h4>
+                    <p id="kpiCompletadas" style="color: var(--primary-dark);">0</p>
+                </div>
+                <div class="kpi-card">
+                    <h4>Pendientes</h4>
+                    <p id="kpiPendientes" style="color: #b78103;">0</p>
+                </div>
+                <div class="kpi-card">
+                    <h4>Hallazgos Totales</h4>
+                    <p id="kpiHallazgos" style="color: var(--danger-color);">0</p>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-box">
+                    <h3>Estado de Inspecciones</h3>
+                    <canvas id="chartEstados"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>Hallazgos Frecuentes (Inconformidades)</h3>
+                    <canvas id="chartHallazgos"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
